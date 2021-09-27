@@ -1,0 +1,17 @@
+---
+title: "p8105_hw1_jl5788"
+author: "Jie Liu (UNI:jl5788)"
+date: "9/26/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+data_collection = tibble(
+  norm_samp = rnorm(10),
+  norm_samp_pos = norm_samp >0
+)
+data_collection
+```
+
+
