@@ -2,7 +2,7 @@
 title: "p8105_hw1_jl5788"
 author: "Jie Liu"
 date: "9/26/2021"
-output: github_document
+output: pdf_document
 ---
 
 # Problem 1
