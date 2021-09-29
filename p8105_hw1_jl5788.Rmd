@@ -1,17 +1,84 @@
 ---
 title: "p8105_hw1_jl5788"
-author: "Jie Liu (UNI:jl5788)"
+author: "Jie Liu"
 date: "9/26/2021"
-output: html_document
+output: github_document
 ---
 
-```{r}
+# Problem 1
+```{r setup,include=FALSE}
 library(tidyverse)
-data_collection = tibble(
-  norm_samp = rnorm(10),
-  norm_samp_pos = norm_samp >0
-)
-data_collection
 ```
+
+#### Data Frame
+```{r}
+data_df = tibble(
+  norm_samp = rnorm(10),
+  norm_samp_pos = norm_samp >0,
+  character_vector = c("a","b","c","d","e","f","g","h","i","j"),
+  type = factor(c("positive","zero","negative","positive","zero","negative","positive","zero","negative","positive"), levels = c("positive","zero","negative"))
+)
+```
+
+##### 1. Caculate the mean of the first variable of dataframe
+```{r,eval=FALSE}
+mean(pull(data_df,norm_samp))
+```
+Success! The result is `r mean(pull(data_df,norm_samp))`.
+
+##### 2. Caculate the mean of the second variable of dataframe
+```{r,eval=FALSE}
+mean(pull(data_df,norm_samp_pos))
+```
+Success! The result is `r mean(pull(data_df,norm_samp_pos))`.
+
+##### 3. Caculate the mean of the third variable of dataframe
+```{r,eval=FALSE}
+mean(pull(data_df,character_vector))
+```
+Failure! The result is `r     mean(pull(data_df,character_vector))`.
+
+##### 4. Caculate the mean of the forth variable of dataframe
+```{r,eval=FALSE}
+mean(pull(data_df,type))
+```
+Failure! The result is `r     mean(pull(data_df,type))`.
+
+
+#### When using as.numeric function to the logical, character, and factor variables, what will happen?
+```{r,eval=FALSE}
+as.numeric(3>2)
+```
+Success! The result is `r as.numeric(3>2)`. Output is 1 because logical variable True equal to 1. On the contrary, if logical variable is False, as.numeric function results to 0.
+
+```{r,eval=FALSE}
+as.numeric("character")
+```
+The result is `r as.numeric("character")` and in the Console,it writes warning message. Because "character" (character variable) cannot equal to any numeric variable like "1"(character variable) equal to 1 (numeric variable), so it just shows NA indicating it has been forced to transform character variables to numeric variables NA.
+
+```{r,eval=FALSE}
+as.numeric(factor("good","bad"))
+```
+The result is `r as.numeric(factor("good","bad"))`. The reason is the same as shows above.
+
+#### Does this help explain what happens when you try to take the mean?
+
+
+These three code chunks above and results they showed help explain what happens when try to take the mean. Because when we use as.numeric() function to transform character vector and factor vector to numeric vector, the results are both NA and we cannot caculate the average of NA, which is meaningless, so Console reports an error when we try it.
+
+# Problem 2
+
+```{r}
+data("penguins", package = "palmerpenguins")
+#view(penguins)
+summary(penguins)
+
+skimr :: skim(penguins)  
+```
+
+The name of the data in this dataset is `r names(penguins)`
+
+
+
 
 
